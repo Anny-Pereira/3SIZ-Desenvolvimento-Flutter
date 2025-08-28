@@ -1,0 +1,6 @@
+O que são listas (List) em Dart e em quais situações elas são mais utilizadas?
+
+Listas são um tipo de dado que pode armazenar conjuntos de dados, 
+sejam eles simples - como uma lista de strings ou mais robustos como uma lista de objetos.
+São utilizadas em situações que precisa-se armazenar maior quantidade de dados em um
+mesmo contexto.
