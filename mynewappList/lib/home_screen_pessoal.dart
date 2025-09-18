@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatefulWidget {
+class HomeScreenPessoal extends StatefulWidget {
   final String title;
-  const HomeScreen({super.key, required this.title});
+  const HomeScreenPessoal({super.key, required this.title});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<HomeScreenPessoal> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenState extends State<HomeScreenPessoal> {
   // _ (underline)) na frente do nome da variavel indica que é privada e só pode ser usada dentro desse bloco
   late TextEditingController _nameController;
   late TextEditingController _ageController;
