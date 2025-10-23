@@ -1,3 +1,4 @@
+import 'package:appstate/home_view_model_patient.dart';
 import 'package:appstate/home_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -34,6 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    _homeViewModel = context.watch<HomeViewModel>();
     return Scaffold(
       appBar: AppBar(title: Text(widget.title)),
       body: Column(
@@ -65,6 +67,21 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
             ],
+          ),
+          Expanded(
+            flex: 7,
+            child: ListView.builder(
+              itemCount: _homeViewModel.listPatients.length,
+              itemBuilder: (context, index){
+                return ListTile(
+                  title: Text("${_homeViewModel.listPatients[index].name}"),
+                  subtitle: Text("${_homeViewModel.listPatients[index].age}"),
+                  trailing: IconButton(
+                    onPressed: (){}, 
+                    icon: Icon(Icons.delete)),
+                );
+              }
+            ),
           ),
         ],
       ),
