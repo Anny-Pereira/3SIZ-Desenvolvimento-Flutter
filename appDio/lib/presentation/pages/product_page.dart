@@ -1,6 +1,6 @@
+import 'package:appdio/presentation/controllers/product_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../controllers/product_controller.dart';
 
 class ProductPage extends StatefulWidget {
   const ProductPage({super.key});
