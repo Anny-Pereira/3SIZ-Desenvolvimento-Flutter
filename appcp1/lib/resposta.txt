@@ -1,0 +1,11 @@
+Nome: Anny Isabelle Gomes Pereira
+RM 553793
+
+Explique a importância de organizar um projeto Flutter em camadas (data, 
+domain e presentation). Quais problemas podem surgir se essa separação
+não for aplicada?
+
+Organizar o projeto em camadas é importante porque separa as responsabilidades (regra de negócio e interface, por exemplo), 
+deixa o código mais limpo e legível, além de permitir melhor manutenabilidade e escalabilidade.
+Sem essa forma de arquitetura, o código fica mais desorganizado e com lógica misturada nas interfaces, 
+dificultando na detecção de erros e posterior manutenção, além de dificultar os testes e torna o projeto menos escalável.
