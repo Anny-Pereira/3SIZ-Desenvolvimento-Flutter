@@ -5,11 +5,19 @@ import 'presentation/mission_list_screen.dart';
 import 'presentation/mission_view_model.dart';
 
 Future<void> main() async {
+
+  //injeção de dependência
+  WidgetsFlutterBinding.ensureInitialized(); 
+  //levanta e garante que está tudo certo para a aplicação (tela branca)
+  //injeta tudo o que o aplicativo precisa
+  await setupDependencies();
+
+
   runApp(
     MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (_) => MissionViewModel()..loadMissions(),
+          create: (_) => MissionViewModel(),
         ),
       ],
       child: const MyApp(),
