@@ -5,7 +5,7 @@ class CustomHttpClient {
   final String baseUrl;
 
   // Inicializa o client Dio com baseUrl customizado
-  CustomHttpClient({this.baseUrl = 'https://gdapp.com.br/api/fiap/missions'})
+  CustomHttpClient({this.baseUrl = 'https://gdapp.com.br/api/fiap'})
     : dio = Dio(BaseOptions(baseUrl: baseUrl));
 
   // Método genérico para GET

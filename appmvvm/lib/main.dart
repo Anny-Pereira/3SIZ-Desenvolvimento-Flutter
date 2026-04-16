@@ -1,3 +1,4 @@
+import 'package:appmvvm/core/dependency_injection.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -10,14 +11,14 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized(); 
   //levanta e garante que está tudo certo para a aplicação (tela branca)
   //injeta tudo o que o aplicativo precisa
-  await setupDependencies();
+  await setupDependecyInjection();
 
 
   runApp(
     MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (_) => MissionViewModel(),
+          create: (_) => MissionViewModel(getIt()),
         ),
       ],
       child: const MyApp(),

@@ -1,16 +1,14 @@
-import 'package:appmvvm/data/mission_repository.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 
+import '../data/mission_repository.dart';
 import '../domain/mission_model.dart';
 
 /// ViewModel responsável por gerenciar o estado da lista de missões.
 class MissionViewModel extends ChangeNotifier {
-  //late - reserva um espaço na memoria em algum momento do codigo
-  //final - valor imutavel, nao muda nunca
+  final MissionRepository _repository;
 
-  final MissionRepository _missionRepository;
-  MissionViewModel(this._missionRepository);
+  MissionViewModel(this._repository);
 
   // Lista interna de missões
   List<MissionModel> _missions = [];
@@ -37,14 +35,32 @@ class MissionViewModel extends ChangeNotifier {
     notifyListeners();
 
     try {
-      _missions = await _missionRepository.getMissions();
+      _missions = await _repository.getMissions();
     } on DioException catch (e) {
-      _errorMessage = 'Erro ao carregar missões ${e.message}';
+      _errorMessage = 'Erro ao carregar missões: ${e.message}';
     } catch (e) {
-      _errorMessage = 'Erro, tente novamente mais tarde!';
+      _errorMessage = 'Erro ao carregar missões: $e';
     } finally {
       _isLoading = false;
       notifyListeners();
     }
   }
+
+  Future<void> createMission(MissionModel mission) async{
+    _isLoading = true;
+    _errorMessage = null;
+    notifyListeners();
+
+    try {
+      await _repository.createMission(mission);
+    } on DioException catch (e) {
+      _errorMessage = 'Erro ao cadastrar missão: ${e.message}';
+    } catch (e) {
+      _errorMessage = 'Erro ao cadastrar missão: $e';
+    } finally {
+      _isLoading = false;
+      notifyListeners();
+    }
+  }
+
 }

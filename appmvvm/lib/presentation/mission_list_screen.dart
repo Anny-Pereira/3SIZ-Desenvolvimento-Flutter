@@ -13,20 +13,21 @@ class MissionListScreen extends StatefulWidget {
 }
 
 class _MissionListScreenState extends State<MissionListScreen> {
-
   late MissionViewModel _missionViewModel;
 
   @override
-  void initState(){
-    _missionViewModel = context.read<MissionViewModel>();
-    _missionViewModel.loadMissions();
+  void initState() {
+    //tudo desse bloco só deve ser chamado depois que a tela for recomposta
+    WidgetsBinding.instance.addPostFrameCallback((_){
+      _missionViewModel = context.read<MissionViewModel>();
+      _missionViewModel.loadMissions();
+    });
     super.initState();
   }
-
   @override
   Widget build(BuildContext context) {
     // Obtém o ViewModel associado à lista de missões
-    _missionViewModel = context.watch<MissionViewModel>();
+    final vm = context.watch<MissionViewModel>();
 
     return Scaffold(
       appBar: AppBar(
@@ -42,14 +43,14 @@ class _MissionListScreenState extends State<MissionListScreen> {
         ],
       ),
       // Estrutura principal da tela, mostra loading, erro ou lista de missões
-      body: _missionViewModel.isLoading
+      body: vm.isLoading
           ? const Center(child: CircularProgressIndicator())
-          : _missionViewModel.errorMessage != null
-              ? Center(child: Text(_missionViewModel.errorMessage!))
+          : vm.errorMessage != null
+              ? Center(child: Text(vm.errorMessage!))
               : ListView.builder(
-                  itemCount: _missionViewModel.missions.length,
+                  itemCount: vm.missions.length,
                   itemBuilder: (context, index) {
-                    final mission = _missionViewModel.missions[index];
+                    final mission = vm.missions[index];
                     return ListTile(
                       // Exibe o ID da missão em um círculo
                       leading: CircleAvatar(child: Text('${mission.id}')),
