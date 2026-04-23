@@ -1,0 +1,5 @@
+-Pergunta Subjetiva
+O fluxo de envio de dados para uma API utilizando o método POST começa quando a View captura os dados inseridos pelo usuário e chama o ViewModel. O ViewModel, por sua vez, valida os dados e manda o Model fazer a requisição HTTP para a API, enviando os dados com o método POST. O Model realiza a comunicação com a API e retorna uma resposta de sucesso ou erro ao ViewModel. A injeção de dependência é realizada através do GetIt, que facilita o acesso ao Model dentro do ViewModel, sem a necessidade de instanciá-lo diretamente. Assim, a View é atualizada automaticamente de acordo com a resposta da API.
+
+-Pergunta Extra
+Essa linha no código realiza a injeção de dependência no projeto, ele levanta todos os recursos necessários (e os pesados) para a aplicação e garante que esteja tudo certo para a execução.
